@@ -1,7 +1,6 @@
 # Day 1: Historian Hysteria
-
 import os
-with open("Day1.txt", "r") as plik:
+with open("Day1/Day1_input.txt", "r") as plik:
     data = plik.read()
     # print(data)
 
