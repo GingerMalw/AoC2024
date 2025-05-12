@@ -1,6 +1,7 @@
 # Day 4: Ceres Search
 
 import re
+# path = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day4\Day4_sample_input.txt"
 path = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day4\Day4_input.txt"
 with open(path, "r") as plik:
     data = plik.read()
@@ -79,5 +80,30 @@ print("Amount of 'XMAS' and 'SAMX' found diagonal: ", find_diagonal)
 total_Part1 = all_simple + find_vertical + find_diagonal
 print("Total 'XMAS' appearance: ", total_Part1)
 
+####################
+
 # Part 2
-# wtf...
+
+def check_diag_mas(grid, word1, word2):
+    if not grid:
+        return 0
+
+    rows = len(grid)
+    cols = len(grid[0])
+    digit = 3
+    count = 0
+
+    for i in range(rows - digit + 1):
+        for j in range(cols - digit + 1):
+            # diagonal (right-down)
+            diag1 = ''.join(grid[i + k][j + k] for k in range(digit))
+            # diagonal (left-down)
+            diag2 = ''.join(grid[i + k][j + digit - 1 - k] for k in range(digit))
+
+            if diag1 == word1 and diag2 == word2:
+                count += 1
+
+    return count
+
+finial_xmas = check_diag_mas(data_grid, r"MAS", r"SAM") + check_diag_mas(data_grid, r"MAS", r"MAS") + check_diag_mas(data_grid, r"SAM", r"SAM") + check_diag_mas(data_grid, r"SAM", r"MAS")
+print("Total 'X-MAS' appearance:", finial_xmas)
