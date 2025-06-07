@@ -1,10 +1,4 @@
-# Day 5: Print Queue
-
-# Data inputs:
-# updates = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_sample_input_update.txt"
-updates = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_input_update.txt"
-# ordering = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_sample_input_ordering.txt"
-ordering = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_input_ordering.txt"
+# --- Day 5: Print Queue ---
 
 # Part One function:
 def find_correct_updates(all_updates, all_orders):
@@ -51,6 +45,7 @@ def take_middle(updates_list):
     # print(f"Middle numbers are: {middle_numbers}")
     return sum(middle_numbers)
 
+
 # Function upgraded for Part Two:
 def page_ordering_rules(list, all_orders):
     fix_updates = []
@@ -88,6 +83,11 @@ def page_ordering_rules(list, all_orders):
     
     return fix_updates
 
+# Data inputs:
+# updates = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_sample_input_update.txt"
+updates = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_input_update.txt"
+# ordering = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_sample_input_ordering.txt"
+ordering = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day5\Day5_input_ordering.txt"
 
 # --- Part One ---
 

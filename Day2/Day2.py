@@ -1,13 +1,6 @@
-# Day 2: Red-Nosed Reports
-
 import os
-with open("Day2/Day2_input.txt", "r") as plik:
-    data = plik.read()
 
-# Part I
-
-report_box = [list(map(int, line.split())) for line in data.splitlines()]
-print("Number of reports on the list:", len(report_box))
+# --- Day 2: Red-Nosed Reports ---
 
 def report_inc(report):
     for level in range(len(report)-1):
@@ -15,11 +8,20 @@ def report_inc(report):
             return False
     return True
 
+
 def report_dec(report):
     for level in range(len(report)-1):
         if report[level] <= report[level+1]:
             return False
     return True
+
+with open(r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day2\Day2_input.txt", "r") as plik:
+    data = plik.read()
+
+# Part I
+
+report_box = [list(map(int, line.split())) for line in data.splitlines()]
+print("Number of reports on the list:", len(report_box))
 
 # Checking the decreasing / increasing reports first
 report_box_filtered = []
@@ -35,6 +37,7 @@ for report in report_box_filtered:
         safe_reports += 1
 
 print("Safe reports amount:", safe_reports)
+
 
 # Part II
 

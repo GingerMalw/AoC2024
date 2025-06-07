@@ -1,25 +1,12 @@
-# Day 4: Ceres Search
-
 import re
-# path = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day4\Day4_sample_input.txt"
-path = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day4\Day4_input.txt"
-with open(path, "r") as plik:
-    data = plik.read()
 
-# Part 1
-# - simple word in row "XMAS" and "SAMX",
-simple_xmas = r"XMAS"
-simple_samx = r"SAMX"
-find_simple_xmas = re.findall(simple_xmas, data)
-find_simple_samx = re.findall(simple_samx, data)
-all_simple = len(find_simple_samx) + len(find_simple_xmas)
-# print(find_simple)
-print("Amount of 'XMAS' and 'SAMX' in simple way: ", all_simple)
+# --- Day 4: Ceres Search ---
 
 # - the vertical where need to count digits in row and check if the same position in next row fit the word creation (or backward word),
 def load_grid(data):
     with open(data, 'r') as vert:
         return [line.strip() for line in vert if line.strip()]
+
 
 def check_vert(grid, word):
     if not grid:
@@ -37,12 +24,6 @@ def check_vert(grid, word):
                 count += 1
     return count
 
-data_grid = load_grid(path)
-
-vertical_samx = check_vert(data_grid, simple_samx)
-vertical_xmas = check_vert(data_grid, simple_xmas)
-find_vertical = vertical_samx + vertical_xmas
-print("Amount of 'XMAS' and 'SAMX' found vertical: ", find_vertical)
 
 # - the diagonal where need to count digits in row and check if position +/-1 fit the word creation (or backward word),
 def check_diag(grid, word):
@@ -70,19 +51,6 @@ def check_diag(grid, word):
 
     return count
 
-diagonal_samx = check_diag(data_grid, simple_samx)
-diagonal_xmas = check_diag(data_grid, simple_xmas)
-find_diagonal = diagonal_xmas + diagonal_samx
-# print(find_diagonal)
-print("Amount of 'XMAS' and 'SAMX' found diagonal: ", find_diagonal)
-
-# the total for Part1:
-total_Part1 = all_simple + find_vertical + find_diagonal
-print("Total 'XMAS' appearance: ", total_Part1)
-
-####################
-
-# Part 2
 
 def check_diag_mas(grid, word1, word2):
     if not grid:
@@ -105,5 +73,40 @@ def check_diag_mas(grid, word1, word2):
 
     return count
 
+
+# path = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day4\Day4_sample_input.txt"
+path = r"C:\Users\malwi\Desktop\Codding_stuff_MW\AdventOfCode2024\AoC2024\Day4\Day4_input.txt"
+with open(path, "r") as plik:
+    data = plik.read()
+
+# Part 1
+
+# - simple word in row "XMAS" and "SAMX",
+simple_xmas = r"XMAS"
+simple_samx = r"SAMX"
+find_simple_xmas = re.findall(simple_xmas, data)
+find_simple_samx = re.findall(simple_samx, data)
+all_simple = len(find_simple_samx) + len(find_simple_xmas)
+# print(find_simple)
+print("Amount of 'XMAS' and 'SAMX' in simple way: ", all_simple)
+
+data_grid = load_grid(path)
+vertical_samx = check_vert(data_grid, simple_samx)
+vertical_xmas = check_vert(data_grid, simple_xmas)
+find_vertical = vertical_samx + vertical_xmas
+print("Amount of 'XMAS' and 'SAMX' found vertical: ", find_vertical)
+
+diagonal_samx = check_diag(data_grid, simple_samx)
+diagonal_xmas = check_diag(data_grid, simple_xmas)
+find_diagonal = diagonal_xmas + diagonal_samx
+# print(find_diagonal)
+print("Amount of 'XMAS' and 'SAMX' found diagonal: ", find_diagonal)
+
+# the total for Part1:
+total_Part1 = all_simple + find_vertical + find_diagonal
+print("Total 'XMAS' appearance: ", total_Part1)
+
+
+# Part 2
 finial_xmas = check_diag_mas(data_grid, r"MAS", r"SAM") + check_diag_mas(data_grid, r"MAS", r"MAS") + check_diag_mas(data_grid, r"SAM", r"SAM") + check_diag_mas(data_grid, r"SAM", r"MAS")
 print("Total 'X-MAS' appearance:", finial_xmas)

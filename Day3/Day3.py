@@ -1,6 +1,7 @@
-# Day 3: Mull It Over
-
 import re
+
+# --- Day 3: Mull It Over ---
+
 with open("Day3/Day3_input.txt", "r") as plik:
     data = plik.read()
 
